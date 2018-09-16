@@ -24,6 +24,7 @@ case `uname` in
         export CFLAGS="-MD -I$PREFIX/Library/include -O3 -Dsrandom=srand -Drandom=rand"
         export LDFLAGS="$LDFLAGS -L$PREFIX/Library/lib"
         sed -i "s/-Wl,-DLL,-IMPLIB/-link -DLL -IMPLIB/g" configure
+        sed -i "s/#include <unistd.h>//g" m4ri/djb.c
         ./configure --prefix="$PREFIX/Library" --libdir="$PREFIX/Library/lib" --disable-sse2
         ;;
 esac
