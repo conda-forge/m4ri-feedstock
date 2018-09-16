@@ -2,13 +2,6 @@
 
 chmod +x configure
 
-./configure --prefix=$PREFIX --libdir=$PREFIX/lib --disable-sse2
-
-make
-make check
-make install
-
-
 case `uname` in
     Darwin|Linux)
         export CFLAGS="-O3 -g -fPIC $CFLAGS"
