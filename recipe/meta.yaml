@@ -12,12 +12,20 @@ source:
 
 build:
   number: 0
-  skip: true  # [win]
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
-    - libtool
+    - libtool                   # [unix]
     - {{ compiler('c') }}
+    - posix                     # [win]
+    - clangdev                  # [win]
+    - lld                       # [win]
+    - m2-automake-wrapper       # [win]
+    - m2-libtool                # [win]
+    - m2-autoconf               # [win]
+    - m2-make                   # [win]
+    - m2-m4                     # [win]
   host:
     - libpng
     - zlib
