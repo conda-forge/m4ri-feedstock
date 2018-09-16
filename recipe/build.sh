@@ -23,6 +23,7 @@ case `uname` in
         export LD=lld-link
         export CFLAGS="-MD -I$PREFIX/Library/include -O3 -Dsrandom=srand -Drandom=rand"
         export LDFLAGS="$LDFLAGS -L$PREFIX/Library/lib"
+        sed -i "s/-Wl,-DLL,-IMPLIB/-link -DLL -IMPLIB/g" configure
         ./configure --prefix="$PREFIX/Library" --libdir="$PREFIX/Library/lib" --disable-sse2
         ;;
 esac
