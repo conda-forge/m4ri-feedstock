@@ -35,10 +35,14 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/include/m4ri/m4ri.h
-    - test -f ${PREFIX}/lib/lib{{ name }}.a
-    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]
-    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]
+    - test -f ${PREFIX}/include/m4ri/m4ri.h                                   # [unix]
+    - test -f ${PREFIX}/lib/lib{{ name }}.a                                   # [unix]
+    - test -f ${PREFIX}/lib/lib{{ name }}.dylib                               # [osx]
+    - test -f ${PREFIX}/lib/lib{{ name }}.so                                  # [linux]
+    - if not exist %LIBRARY_BIN%\\{{ name }}-0-0-{{ version }}.dll exit 1     # [win]
+    - if not exist %LIBRARY_LIB%\\{{ name }}.lib exit 1                       # [win]
+    - if not exist %LIBRARY_LIB%\\{{ name }}_static.lib exit 1                # [win]
+    - if not exist %LIBRARY_INC%\\{{ name }}\\m4ri.h exit 1                   # [win]
 
 about:
   home: https://bitbucket.org/malb/m4ri
