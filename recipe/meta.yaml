@@ -16,11 +16,14 @@ build:
 
 requirements:
   build:
-    - libtool
     - {{ compiler('c') }}
+    - libtool
+    - autoconf
+
   host:
     - libpng
     - zlib
+
   run:
     - libpng
     - zlib
@@ -29,13 +32,13 @@ test:
   commands:
     - test -f ${PREFIX}/include/m4ri/m4ri.h
     - test -f ${PREFIX}/lib/lib{{ name }}.a
-    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]
-    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]
+    - test -f ${PREFIX}/lib/lib{{ name }}${SHLIB_EXT}
 
 about:
   home: https://bitbucket.org/malb/m4ri
   license: GPLv2+
-  license_file: {{ SRC_DIR }}/COPYING
+  license_family: GPL
+  license_file: COPYING
   summary: M4RI is a library for fast arithmetic with dense matrices over F2
   dev_url: https://bitbucket.org/malb/m4ri
   doc_url: https://malb.bitbucket.io/m4ri
@@ -43,3 +46,4 @@ about:
 extra:
   recipe-maintainers:
     - isuruf
+    - marcelotrevisani
