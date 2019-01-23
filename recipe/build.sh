@@ -20,6 +20,7 @@ case `uname` in
         export LDFLAGS="$LDFLAGS -L$PREFIX/Library/lib"
         sed -i "s/#include <unistd.h>//g" m4ri/djb.c
         cp "$PREFIX/Library/lib/libpng.lib" "$PREFIX/Library/lib/png.lib"
+        cp "$PREFIX/Library/bin/libpng.dll" "$PREFIX/Library/bin/png.dll"
         ./configure --prefix="$PREFIX/Library" --libdir="$PREFIX/Library/lib" --disable-sse2
         ;;
 esac
@@ -34,5 +35,6 @@ if [[ `uname` == MINGW* ]]; then
     mv "${LIBRARY_LIB}/${PROJECT}.lib" "${LIBRARY_LIB}/${PROJECT}_static.lib"
     mv "${LIBRARY_LIB}/${PROJECT}.dll.lib" "${LIBRARY_LIB}/${PROJECT}.lib"
     rm "${LIBRARY_LIB}/png.lib"
+    rm "${LIBRARY_LIB}/png.dll"
 fi
 
