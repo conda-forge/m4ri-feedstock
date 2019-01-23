@@ -11,7 +11,9 @@ while(True):
     if (i >= len(sys.argv)):
         break
     arg = sys.argv[i]
-    if arg.startswith("-L"):
+    if arg == "-LD" or arg == "-LDd":
+        args.append(arg)
+    elif arg.startswith("-L"):
         if arg == "-L":
             i=i+1
             arg = sys.argv[i]
@@ -21,8 +23,6 @@ while(True):
     elif arg == "-link":
         link_args.extend(sys.argv[i+1:])
         break
-    elif arg == "-LD" or arg == "-LDd":
-        args.append(arg)
     elif arg.startswith("-l"):
         link_args.append(arg[2:]+".lib")
     elif arg.startswith("-Wl,"):
