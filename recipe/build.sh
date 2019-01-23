@@ -5,6 +5,8 @@ chmod +x configure
 case `uname` in
     Darwin|Linux)
         export CFLAGS="-O3 -g -fPIC $CFLAGS"
+        autoreconf --install
+        chmod +x configure
         ./configure --prefix="$PREFIX" --libdir="$PREFIX"/lib --disable-sse2
         ;;
     MINGW*)
