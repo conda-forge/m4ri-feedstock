@@ -30,14 +30,7 @@ given by [OPTIONS] that Unix cc understands into parameters that cl understands.
 EOF
 }
 
-case $MACHTYPE in
-    *-msys)
-        slash="-"
-        ;;
-    *)
-        slash="/"
-        ;;
-esac
+slash="-"
 
 # prog specifies the program that should be run cl.exe
 prog=${CCCL:-cl}
@@ -173,6 +166,7 @@ EOF
             linkopt+=("${linkarg}")
         done
         ;;
+
     -W*)
         #ignore warnings
         ;;
@@ -184,10 +178,6 @@ EOF
     -isystem)
         shift
         clopt+=("${slash}I$1")
-        ;;
-
-    -MT)
-        exit 0
         ;;
 
     -mno-cygwin)
@@ -213,26 +203,13 @@ EOF
         clopt+=("${slash}Tp$1")
         ;;
 
-    /link)
+    /link|-link)
         # Same behaviour as cl - all options after /link are linker options
         shift
         while test $# -gt 0; do
-            case "$1" in
-            /*)
-                linkopt+=("${slash}${1:1}")
-                ;;
-
-            *)
-                linkopt+=("$1")
-                ;;
-            esac
+            linkopt+=("$1")
             shift
         done
-        ;;
-
-    /*)
-        # All '/' options are assumed to be for cl and are passed through
-        clopt+=("${slash}${1:1}")
         ;;
 
     *)
@@ -285,3 +262,4 @@ else
     exec $prog ${clopt[@]} ${linkopt[@]} | tr -d '\r' | grep -v -e "\.cpp$" -e "\.cxx$" -e "\.cc$" -e "\.C$" -e "\.c$" -e "^   Creating library" -e "^Generating Code"
     exit ${PIPESTATUS[0]}
 fi
+
