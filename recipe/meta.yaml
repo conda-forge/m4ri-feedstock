@@ -9,8 +9,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://bitbucket.org/malb/m4ri/downloads/{{ name }}-{{ version }}.tar.gz
   sha256: 4bc3f53a5116e1ff0720c08f34ce415c88e2fb503437abfd15e196792ec6d5aa
-  patches:
-    - no_undefined.diff  # [win]
 
 build:
   number: 1001
