@@ -19,7 +19,7 @@ case `uname` in
         export LDFLAGS="$LDFLAGS -L$PREFIX/Library/lib"
         sed -i "s/#include <unistd.h>//g" m4ri/djb.c
         cp "$PREFIX/Library/lib/libpng.lib" "$PREFIX/Library/lib/png.lib"
-        cp "$PREFIX/Library/bin/libpng16.dll" "$PREFIX/Library/bin/png.dll"
+        export lt_cv_deplibs_check_method=pass_all
         ./configure --prefix="$PREFIX/Library" --libdir="$PREFIX/Library/lib" --disable-sse2
         ;;
 esac
