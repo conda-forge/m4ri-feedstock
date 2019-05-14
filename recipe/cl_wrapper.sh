@@ -167,8 +167,10 @@ EOF
         ;;
 
     -Wl*)
-        echo $1 | sed 's/-Wl,//' | sed -n 1'p' | tr ',' '\n' | while read word; do
-            linkopt+=("${word}")
+        IFS=',' read -ra linkopt2 <<< "$(echo $1 | sed 's/-Wl,//')"
+        for linkarg in ${linkopt2[@]}
+        do
+            linkopt+=("${linkarg}")
         done
         ;;
     -W*)
