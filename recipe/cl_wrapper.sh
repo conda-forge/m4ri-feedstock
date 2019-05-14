@@ -166,6 +166,11 @@ EOF
         #ignore pedantic
         ;;
 
+    -Wl*)
+        echo $1 | sed 's/-Wl,//' | sed -n 1'p' | tr ',' '\n' | while read word; do
+            linkopt+=("${word}")
+        done
+        ;;
     -W*)
         #ignore warnings
         ;;
