@@ -17,9 +17,8 @@ case `uname` in
         export LD=lld-link
         export CCCL=clang-cl
         export NM=llvm-nm
-        export CFLAGS="-MD -I$PREFIX/Library/include -O2 -Dsrandom=srand -Drandom=rand"
+        export CFLAGS="-MD -I$PREFIX/Library/include -O2 -DM4RI_USE_DLL"
         export LDFLAGS="$LDFLAGS -L$PREFIX/Library/lib"
-        sed -i "s/#include <unistd.h>//g" m4ri/djb.c
         cp "$PREFIX/Library/lib/libpng.lib" "$PREFIX/Library/lib/png.lib"
         export lt_cv_deplibs_check_method=pass_all
         ./configure --prefix="$PREFIX/Library" --libdir="$PREFIX/Library/lib" --disable-sse2

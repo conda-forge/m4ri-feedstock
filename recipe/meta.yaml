@@ -9,10 +9,15 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://bitbucket.org/malb/m4ri/downloads/{{ name }}-{{ version }}.tar.gz
   sha256: 4bc3f53a5116e1ff0720c08f34ce415c88e2fb503437abfd15e196792ec6d5aa
+  patches:
+    - dll.patch
+    - unistd.diff
 
 build:
-  number: 1001
+  number: 1002
   skip: true  # [win and vc<14]
+  run_exports:
+    - {{ pin_subpackage("m4ri", exact=True) }}
 
 requirements:
   build:
