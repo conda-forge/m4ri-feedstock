@@ -187,3 +187,15 @@ index afa697b..ca540bd 100644
  
  int test_trsm_upper_right (rci_t m, rci_t n, int offset){
    printf("upper_right:: m: %4d n: %4d offset: %4d ... ", m, n, offset);
+diff --git a/testsuite/test_solve.c b/testsuite/test_solve.c
+index 023f124..95a9b42 100644
+--- a/testsuite/test_solve.c
++++ b/testsuite/test_solve.c
+@@ -4,6 +4,7 @@
+ #include <m4ri/config.h>
+ #include <stdlib.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ int test_pluq_solve_left(rci_t m, rci_t n, int offsetA, int offsetB){
+   mzd_t* Abase = mzd_init(2048, 2048);
