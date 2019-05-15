@@ -48,10 +48,10 @@ index db86750..23cad7e 100644
  
  /**
   * Returns the i-th gray code entry for a gray code of length \f$2^l\f$.
-diff --git a/tests/test_solve.c b/tests/test_solve.c
+diff --git a/testsuite/test_solve.c b/testsuite/test_solve.c
 index 023f124..80d8385 100644
---- a/tests/test_solve.c
-+++ b/tests/test_solve.c
+--- a/testsuite/test_solve.c
++++ b/testsuite/test_solve.c
 @@ -72,8 +72,8 @@ int main() {
    srandom(17);
  
@@ -63,10 +63,10 @@ index 023f124..80d8385 100644
      m = m ? (m) : 1;
      n = n ? (n) : 1;
  
-diff --git a/tests/testing.h b/tests/testing.h
+diff --git a/testsuite/testing.h b/testsuite/testing.h
 index dece77a..b9021c9 100644
---- a/tests/testing.h
-+++ b/tests/testing.h
+--- a/testsuite/testing.h
++++ b/testsuite/testing.h
 @@ -4,6 +4,10 @@
  #include <m4ri/misc.h>
  #include <m4ri/mzd.h>
