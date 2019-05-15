@@ -78,3 +78,28 @@ index dece77a..b9021c9 100644
  mzd_t *mzd_init_test_matrix_random(rci_t M, rci_t N, rci_t m, rci_t n, word pattern, mzd_t **A);
  void mzd_free_test_matrix_random(mzd_t *A, mzd_t *a);
  int mzd_check_pattern(mzd_t *A, rci_t m, rci_t n, word pattern);
+diff --git a/testsuite/test_elimination.c b/testsuite/test_elimination.c
+index 77a2f1c..db80e29 100644
+--- a/tests/test_elimination.c
++++ b/tests/test_elimination.c
+@@ -1,6 +1,7 @@
+ #include <m4ri/config.h>
+ #include <stdlib.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ int elim_test_equality(rci_t nr, rci_t nc) {
+   int ret = 0; 
+diff --git a/testsuite/test_multiplication.c b/testsuite/test_multiplication.c
+index 3826604..4b56eb0 100644
+--- a/tests/test_multiplication.c
++++ b/tests/test_multiplication.c
+@@ -1,6 +1,7 @@
+ #include <m4ri/config.h>
+ #include <stdlib.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ /**
+  * Check that the results of all implemented multiplication algorithms
+
