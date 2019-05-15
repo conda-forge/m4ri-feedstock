@@ -103,3 +103,87 @@ index 3826604..4b56eb0 100644
  /**
   * Check that the results of all implemented multiplication algorithms
 
+diff --git a/testsuite/test_invert.c b/testsuite/test_invert.c
+index 065b752..866acec 100644
+--- a/testsuite/test_invert.c
++++ b/testsuite/test_invert.c
+@@ -1,6 +1,7 @@
+ #include <m4ri/config.h>
+ #include <stdlib.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ /**
+  * Check that inversion works.
+diff --git a/testsuite/test_kernel.c b/testsuite/test_kernel.c
+index 2df7690..ed62ef6 100644
+--- a/testsuite/test_kernel.c
++++ b/testsuite/test_kernel.c
+@@ -21,6 +21,7 @@
+ #include <m4ri/config.h>
+ #include <stdlib.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ int test_kernel_left_pluq(rci_t m, rci_t n) {
+   mzd_t* A = mzd_init(m, n);
+diff --git a/testsuite/test_misc.c b/testsuite/test_misc.c
+index f093f9b..a9a9547 100644
+--- a/testsuite/test_misc.c
++++ b/testsuite/test_misc.c
+@@ -21,6 +21,7 @@
+ 
+ #include <stdarg.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ #define b(n) (m4ri_one<<(n))
+ 
+diff --git a/testsuite/test_ple.c b/testsuite/test_ple.c
+index 34b31b5..660fa76 100644
+--- a/testsuite/test_ple.c
++++ b/testsuite/test_ple.c
+@@ -1,6 +1,7 @@
+ #include <m4ri/config.h>
+ #include <stdlib.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ int check_pluq(mzd_t *A, rci_t *r) {
+   mzd_t* Acopy = mzd_copy (NULL,A);
+diff --git a/testsuite/test_random.c b/testsuite/test_random.c
+index 5beea16..dc248ae 100644
+--- a/testsuite/test_random.c
++++ b/testsuite/test_random.c
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ int test_random(rci_t m, rci_t n)
+ {
+diff --git a/testsuite/test_smallops.c b/testsuite/test_smallops.c
+index df493bb..beca1af 100644
+--- a/testsuite/test_smallops.c
++++ b/testsuite/test_smallops.c
+@@ -3,6 +3,7 @@
+ #include <inttypes.h>
+ #include "testing.h"
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ //#define ABORT_ON_FAIL 1
+ 
+diff --git a/testsuite/test_trsm.c b/testsuite/test_trsm.c
+index afa697b..ca540bd 100644
+--- a/testsuite/test_trsm.c
++++ b/testsuite/test_trsm.c
+@@ -1,6 +1,7 @@
+ #include <m4ri/config.h>
+ #include <stdlib.h>
+ #include <m4ri/m4ri.h>
++#include "testing.h"
+ 
+ int test_trsm_upper_right (rci_t m, rci_t n, int offset){
+   printf("upper_right:: m: %4d n: %4d offset: %4d ... ", m, n, offset);
