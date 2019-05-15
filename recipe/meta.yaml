@@ -14,8 +14,10 @@ source:
     - unistd.diff
 
 build:
-  number: 1001
+  number: 1002
   skip: true  # [win and vc<14]
+  run_exports:
+    - {{ pin_subpackage("m4ri", exact=True) }}
 
 requirements:
   build:
