@@ -1,0 +1,80 @@
+diff --git a/configure.ac b/configure.ac
+index f58595b..bb39266 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -259,6 +259,9 @@ else
+    AC_SUBST(M4RI_HAVE_LIBPNG)
+ fi
+ 
++M4RI_BUILDING_M4RI=1
++AC_DEFINE([M4RI_BUILDING_M4RI], [1], [Define to indicate that m4ri is being built instead of being used])
++
+ RELEASE="AC_PACKAGE_VERSION"
+ AC_SUBST(RELEASE)
+ 
+diff --git a/m4ri/graycode.h b/m4ri/graycode.h
+index db86750..23cad7e 100644
+--- a/m4ri/graycode.h
++++ b/m4ri/graycode.h
+@@ -12,6 +12,22 @@
+ #ifndef M4RI_GRAYFLEX_H
+ #define M4RI_GRAYFLEX_H
+ 
++#ifdef HAVE_CONFIG_H
++ #include "config.h"
++#endif
++
++#ifdef _WIN32
++  #if defined(DLL_EXPORT) && defined(M4RI_BUILDING_M4RI)
++    #define M4RI_DLL_EXPORT __declspec(dllexport)
++  #elif defined(M4RI_USE_DLL) && !defined(M4RI_BUILDING_M4RI)
++    #define M4RI_DLL_EXPORT __declspec(dllimport)
++  #else
++    #define M4RI_DLL_EXPORT
++  #endif
++#else
++  #define M4RI_DLL_EXPORT
++#endif
++
+ /******************************************************************************
+ *
+ *                 M4RI: Linear Algebra over GF(2)
+@@ -79,7 +95,7 @@ typedef struct {
+  * \warning Not thread safe!
+  */ 
+ 
+-extern code **m4ri_codebook;
++M4RI_DLL_EXPORT extern code **m4ri_codebook;
+ 
+ /**
+  * Returns the i-th gray code entry for a gray code of length \f$2^l\f$.
+diff --git a/tests/test_solve.c b/tests/test_solve.c
+index 023f124..80d8385 100644
+--- a/tests/test_solve.c
++++ b/tests/test_solve.c
+@@ -72,8 +72,8 @@ int main() {
+   srandom(17);
+ 
+   for(size_t i=0; i<100; i++) {
+-    size_t m = random() & 511;
+-    size_t n = random() & 1023;
++    size_t m = m4ri_random_word() & 511;
++    size_t n = m4ri_random_word() & 1023;
+     m = m ? (m) : 1;
+     n = n ? (n) : 1;
+ 
+diff --git a/tests/testing.h b/tests/testing.h
+index dece77a..b9021c9 100644
+--- a/tests/testing.h
++++ b/tests/testing.h
+@@ -4,6 +4,10 @@
+ #include <m4ri/misc.h>
+ #include <m4ri/mzd.h>
+ 
++#ifdef _MSC_VER
++#define srandom srand
++#endif
++
+ mzd_t *mzd_init_test_matrix_random(rci_t M, rci_t N, rci_t m, rci_t n, word pattern, mzd_t **A);
+ void mzd_free_test_matrix_random(mzd_t *A, mzd_t *a);
+ int mzd_check_pattern(mzd_t *A, rci_t m, rci_t n, word pattern);
