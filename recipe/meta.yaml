@@ -11,14 +11,24 @@ source:
   sha256: 4bc3f53a5116e1ff0720c08f34ce415c88e2fb503437abfd15e196792ec6d5aa
 
 build:
-  number: 1000
-  skip: true  # [win]
+  number: 1001
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
+    - libtool                   # [unix]
+    - automake                  # [unix]
+    - autoconf                  # [unix]
     - {{ compiler('c') }}
-    - libtool
-    - automake
+    - posix                     # [win]
+    - clangdev                  # [win]
+    - lld                       # [win]
+    - llvmdev                   # [win]
+    - m2-automake-wrapper       # [win]
+    - m2-libtool                # [win]
+    - m2-autoconf               # [win]
+    - m2-make                   # [win]
+    - m2-m4                     # [win]
 
   host:
     - libpng
@@ -30,9 +40,13 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/include/m4ri/m4ri.h
-    - test -f ${PREFIX}/lib/lib{{ name }}.a
-    - test -f ${PREFIX}/lib/lib{{ name }}${SHLIB_EXT}
+    - test -f ${PREFIX}/include/m4ri/m4ri.h                                   # [unix]
+    - test -f ${PREFIX}/lib/lib{{ name }}.a                                   # [unix]
+    - test -f ${PREFIX}/lib/lib{{ name }}${SHLIB_EXT}                         # [unix]
+    - if not exist %LIBRARY_BIN%\\{{ name }}-0-0-{{ version }}.dll exit 1     # [win]
+    - if not exist %LIBRARY_LIB%\\{{ name }}.lib exit 1                       # [win]
+    - if not exist %LIBRARY_LIB%\\{{ name }}_static.lib exit 1                # [win]
+    - if not exist %LIBRARY_INC%\\{{ name }}\\m4ri.h exit 1                   # [win]
 
 about:
   home: https://bitbucket.org/malb/m4ri
