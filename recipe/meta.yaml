@@ -24,6 +24,8 @@ requirements:
     - libtool                   # [unix]
     - automake                  # [unix]
     - autoconf                  # [unix]
+    - make                      # [unix]
+    - m4                        # [unix]
     - {{ compiler('c') }}
     - posix                     # [win]
     - clangdev                  # [win]
