@@ -14,8 +14,8 @@ source:
     - unistd.diff
 
 build:
-  number: 1004
   skip: true  # [win and vc<14]
+  number: 1005
   run_exports:
     - {{ pin_subpackage("m4ri") }}
 
@@ -57,7 +57,7 @@ test:
 
 about:
   home: https://bitbucket.org/malb/m4ri
-  license: GPLv2+
+  license: GPL-2.0-or-later
   license_family: GPL
   license_file: COPYING
   summary: M4RI is a library for fast arithmetic with dense matrices over F2
