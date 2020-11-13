@@ -2,15 +2,15 @@
 
 set -e
 
-autoreconf --install
+autoreconf -vfi
 chmod +x configure
 
-case `uname` in
-    Darwin|Linux)
+case $target_platform in
+    osx-*|linux-*)
         export CFLAGS="-O3 -g -fPIC $CFLAGS"
         ./configure --prefix="$PREFIX" --libdir="$PREFIX"/lib --disable-sse2
         ;;
-    MINGW*)
+    win-*)
         export PATH="$PREFIX/Library/bin:$BUILD_PREFIX/Library/bin:$RECIPE_DIR:$PATH"
         export CC=cl_wrapper.sh
         export RANLIB=llvm-ranlib
@@ -28,11 +28,13 @@ case `uname` in
 esac
 
 make -j${CPU_COUNT}
-make check -j${CPU_COUNT}
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
+  make check -j${CPU_COUNT}
+fi
 make install
 
 PROJECT=m4ri
-if [[ `uname` == MINGW* ]]; then
+if [[ "$target_platform" == win-* ]]; then
     LIBRARY_LIB=$PREFIX/Library/lib
     mv "${LIBRARY_LIB}/${PROJECT}.lib" "${LIBRARY_LIB}/${PROJECT}_static.lib"
     mv "${LIBRARY_LIB}/${PROJECT}.dll.lib" "${LIBRARY_LIB}/${PROJECT}.lib"
