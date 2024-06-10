@@ -15,7 +15,7 @@ source:
 
 build:
   skip: true  # [win and vc<14]
-  number: 1005
+  number: 1006
   run_exports:
     - {{ pin_subpackage("m4ri") }}
 
@@ -27,6 +27,7 @@ requirements:
     - make                      # [unix]
     - m4                        # [unix]
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - posix                     # [win]
     - clangdev                  # [win]
     - lld                       # [win]
@@ -36,12 +37,7 @@ requirements:
     - m2-autoconf               # [win]
     - m2-make                   # [win]
     - m2-m4                     # [win]
-
   host:
-    - libpng
-    - zlib
-
-  run:
     - libpng
     - zlib
 
@@ -68,3 +64,4 @@ extra:
   recipe-maintainers:
     - isuruf
     - marcelotrevisani
+    - saraedum
