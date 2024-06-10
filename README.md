@@ -210,4 +210,5 @@ Feedstock Maintainers
 
 * [@isuruf](https://github.com/isuruf/)
 * [@marcelotrevisani](https://github.com/marcelotrevisani/)
+* [@saraedum](https://github.com/saraedum/)
 
