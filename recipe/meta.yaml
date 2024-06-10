@@ -27,6 +27,7 @@ requirements:
     - make                      # [unix]
     - m4                        # [unix]
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - posix                     # [win]
     - clangdev                  # [win]
     - lld                       # [win]
