@@ -3,15 +3,13 @@ About m4ri-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/m4ri-feedstock/blob/main/LICENSE.txt)
 
-Home: https://bitbucket.org/malb/m4ri
+Home: https://github.com/malb/m4ri
 
 Package license: GPL-2.0-or-later
 
 Summary: M4RI is a library for fast arithmetic with dense matrices over F2
 
-Development: https://bitbucket.org/malb/m4ri
-
-Documentation: https://malb.bitbucket.io/m4ri
+Development: https://github.com/malb/m4ri
 
 Current build status
 ====================
