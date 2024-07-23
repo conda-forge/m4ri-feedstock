@@ -1,4 +1,4 @@
-{% set version = "20140914" %}
+{% set version = "20200125" %}
 {% set name = "m4ri" %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://bitbucket.org/malb/m4ri/downloads/{{ name }}-{{ version }}.tar.gz
+  url: https://github.com/malb/{{ name }}/archive/refs/tags/release-{{ version }}.tar.gz
   sha256: 4bc3f53a5116e1ff0720c08f34ce415c88e2fb503437abfd15e196792ec6d5aa
   patches:
     - dll.patch
@@ -15,7 +15,7 @@ source:
 
 build:
   skip: true  # [win and vc<14]
-  number: 1006
+  number: 0
   run_exports:
     - {{ pin_subpackage("m4ri") }}
 
@@ -57,13 +57,12 @@ test:
     - if not exist %LIBRARY_INC%\\{{ name }}\\m4ri.h exit 1                   # [win]
 
 about:
-  home: https://bitbucket.org/malb/m4ri
+  home: https://github.com/malb/m4ri
   license: GPL-2.0-or-later
   license_family: GPL
   license_file: COPYING
   summary: M4RI is a library for fast arithmetic with dense matrices over F2
-  dev_url: https://bitbucket.org/malb/m4ri
-  doc_url: https://malb.bitbucket.io/m4ri
+  dev_url: https://github.com/malb/m4ri
 
 extra:
   recipe-maintainers:
