@@ -18,22 +18,14 @@ build:
 
 requirements:
   build:
-    - libtool                   # [unix]
-    - automake                  # [unix]
-    - autoconf                  # [unix]
-    - make                      # [unix]
-    - m4                        # [unix]
+    - libtool                # [unix]
+    - automake               # [unix]
+    - autoconf               # [unix]
+    - make                   # [unix]
+    - m4                     # [unix]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
-    - posix                     # [win]
-    - clangdev                  # [win]
-    - lld                       # [win]
-    - llvmdev                   # [win]
-    - m2-automake-wrapper       # [win]
-    - m2-libtool                # [win]
-    - m2-autoconf               # [win]
-    - m2-make                   # [win]
-    - m2-m4                     # [win]
+    - autotools_clang_conda  # [win]
   host:
     - libpng
     - zlib
