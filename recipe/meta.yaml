@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/malb/{{ name }}/archive/refs/tags/release-{{ version }}.tar.gz
-  sha256: 4bc3f53a5116e1ff0720c08f34ce415c88e2fb503437abfd15e196792ec6d5aa
+  sha256: 7369adcecb72d4dacfb23fd437a6b59a956f76b26dee07f32558cb915a9d6e9d
   patches:
     - dll.patch
     - unistd.diff
