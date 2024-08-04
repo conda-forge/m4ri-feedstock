@@ -31,6 +31,5 @@ if [[ "$target_platform" == win-* ]]; then
     LIBRARY_LIB=$PREFIX/Library/lib
     mv "${LIBRARY_LIB}/${PROJECT}.lib" "${LIBRARY_LIB}/${PROJECT}_static.lib"
     mv "${LIBRARY_LIB}/${PROJECT}.dll.lib" "${LIBRARY_LIB}/${PROJECT}.lib"
-    rm "${LIBRARY_LIB}/png.lib"
 fi
 
