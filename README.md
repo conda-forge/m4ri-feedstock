@@ -3,28 +3,19 @@ About m4ri-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/m4ri-feedstock/blob/main/LICENSE.txt)
 
-Home: https://bitbucket.org/malb/m4ri
+Home: https://github.com/malb/m4ri
 
 Package license: GPL-2.0-or-later
 
 Summary: M4RI is a library for fast arithmetic with dense matrices over F2
 
-Development: https://bitbucket.org/malb/m4ri
-
-Documentation: https://malb.bitbucket.io/m4ri
+Development: https://github.com/malb/m4ri
 
 Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://app.travis-ci.com/conda-forge/m4ri-feedstock">
-        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/m4ri-feedstock/main.svg?label=Linux">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -70,13 +61,6 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=611&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/m4ri-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=611&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/m4ri-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
             </tr>
