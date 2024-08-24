@@ -12,6 +12,8 @@ source:
 
 build:
   skip: true  # [win and vc<14]
+  # We temporarily disable the Windows build until we figure out how to build this with autotools_clang_conda again, see https://github.com/conda-forge/m4ri-feedstock/pull/13
+  skip: true  # [win]
   number: 0
   run_exports:
     - {{ pin_subpackage("m4ri") }}
