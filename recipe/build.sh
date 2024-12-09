@@ -26,6 +26,6 @@ fi
 make install
 
 if [[ "$target_platform" == win-* ]]; then
-    mv "${PREFIX}/m4ri.dll.lib" "${PREFIX}/m4ri.lib"
+    mv "${PREFIX}/lib/m4ri.dll.lib" "${PREFIX}/lib/m4ri.lib"
 fi
 
