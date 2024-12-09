@@ -25,10 +25,7 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" || "${CROSSCOMPILING_EMULATOR:-}
 fi
 make install
 
-PROJECT=m4ri
 if [[ "$target_platform" == win-* ]]; then
-    LIBRARY_LIB=$PREFIX/Library/lib
-    rm "${LIBRARY_LIB}/${PROJECT}.lib"
-    mv "${LIBRARY_LIB}/${PROJECT}.dll.lib" "${LIBRARY_LIB}/${PROJECT}.lib"
+    mv "${PREFIX}/m4ri.dll.lib" "${PREFIX}/m4ri.lib"
 fi
 
