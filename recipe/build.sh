@@ -24,8 +24,3 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" || "${CROSSCOMPILING_EMULATOR:-}
   make check -j${CPU_COUNT}
 fi
 make install
-
-if [[ "$target_platform" == win-* ]]; then
-    mv "${PREFIX}/lib/m4ri.dll.lib" "${PREFIX}/lib/m4ri.lib"
-fi
-
