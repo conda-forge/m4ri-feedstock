@@ -2,18 +2,14 @@
 {% set name = "m4ri" %}
 
 package:
-  name: {{ name }}
+  name: m4ri
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/malb/{{ name }}/archive/refs/tags/release-{{ version }}.tar.gz
+  url: https://github.com/malb/m4ri/archive/refs/tags/release-{{ version }}.tar.gz
   sha256: f9e5d0f13b34b55feb33babd04ecb59512639fea6e289b977f9b938d8b38fc69
 
 build:
-  skip: true  # [win and vc<14]
-  # We temporarily disable the Windows build until we figure out how to build this with autotools_clang_conda again, see https://github.com/conda-forge/m4ri-feedstock/pull/13
-  skip: true  # [win]
   number: 0
   run_exports:
     - {{ pin_subpackage("m4ri") }}
@@ -34,13 +30,14 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/include/m4ri/m4ri.h                                   # [unix]
-    - test -f ${PREFIX}/lib/lib{{ name }}.a                                   # [unix]
-    - test -f ${PREFIX}/lib/lib{{ name }}${SHLIB_EXT}                         # [unix]
-    - if not exist %LIBRARY_BIN%\\{{ name }}-0-0-{{ version }}.dll exit 1     # [win]
-    - if not exist %LIBRARY_LIB%\\{{ name }}.lib exit 1                       # [win]
-    - if not exist %LIBRARY_LIB%\\{{ name }}_static.lib exit 1                # [win]
-    - if not exist %LIBRARY_INC%\\{{ name }}\\m4ri.h exit 1                   # [win]
+    - test -f ${PREFIX}/include/m4ri/m4ri.h                             # [unix]
+    - test ! -f ${PREFIX}/lib/libm4ri.a                                 # [unix]
+    - test -f ${PREFIX}/lib/libm4ri${SHLIB_EXT}                         # [unix]
+    - if not exist %LIBRARY_BIN%\\m4ri-0-0-{{ version }}.dll exit 1     # [win]
+    - if not exist %LIBRARY_LIB%\\m4ri.lib exit 1                       # [win]
+    - if exist %LIBRARY_LIB%\\m4ri_static.lib exit 1                    # [win]
+    - if not exist %LIBRARY_INC%\\m4ri\\m4ri.h exit 1                   # [win]
+
 
 about:
   home: https://github.com/malb/m4ri
