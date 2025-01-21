@@ -2,6 +2,9 @@
 
 set -e
 
+# remove after 20240729
+sed -i.bak "s/@SIMD_CFLAGS@//g" m4ri.pc.in
+
 autoreconf -vfi
 chmod +x configure
 
