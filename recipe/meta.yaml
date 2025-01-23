@@ -10,7 +10,7 @@ source:
   sha256: f9e5d0f13b34b55feb33babd04ecb59512639fea6e289b977f9b938d8b38fc69
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("m4ri") }}
 
