@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/malb/m4ri/archive/refs/tags/{{ version }}.tar.gz
   sha256: 68196ed43bc2f20f8cf84433ff5d7161bf71011f2f429ce3c70b372740f4d4cf
+  patches:
+    - patches/0001-remove-export-all-symbols.patch  # [win]
 
 build:
   number: 0

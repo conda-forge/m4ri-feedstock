@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 7e0df2a..306503d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,7 +37,7 @@ AC_SUBST(LIBM)
+ # Check for MinGW to add specific linker flags for DLL symbol exporting
+ case "$host_os" in
+   mingw*)
+-    M4RI_EXPORT_ALL_SYMBOLS_LDFLAGS="-Wl,--export-all-symbols"
++    M4RI_EXPORT_ALL_SYMBOLS_LDFLAGS=""
+     M4RI_INSTALL_FLAGS="-no-fast-install"
+     ;;
+   *)

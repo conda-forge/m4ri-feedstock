@@ -17,16 +17,7 @@ case $target_platform in
         ;;
 esac
 
-configure_args="--prefix=$PREFIX --libdir=$PREFIX/lib --disable-sse2 --disable-static"
-
-if [[ "$target_platform" == "win-64" ]]; then
-    # configure.ac sets -Wl,--export-all-symbols for mingw, but libtool strips
-    # the -Wl, prefix and passes --export-all-symbols directly to clang which
-    # rejects it. Symbol exports are handled via .def files already.
-    configure_args="$configure_args M4RI_EXPORT_ALL_SYMBOLS_LDFLAGS="
-fi
-
-./configure $configure_args
+./configure --prefix="$PREFIX" --libdir="$PREFIX"/lib --disable-sse2 --disable-static
 
 [[ "$target_platform" == "win-64" ]] && patch_libtool
 
