@@ -1,4 +1,4 @@
-{% set version = "20250128" %}
+{% set version = "20260122" %}
 {% set name = "m4ri" %}
 
 package:
@@ -7,7 +7,9 @@ package:
 
 source:
   url: https://github.com/malb/m4ri/archive/refs/tags/{{ version }}.tar.gz
-  sha256: f35110cc4393be26a12308de2b2566c8a3d96539f2c03c5ab315042fe95e51a5
+  sha256: 68196ed43bc2f20f8cf84433ff5d7161bf71011f2f429ce3c70b372740f4d4cf
+  patches:
+    - patches/0001-remove-export-all-symbols.patch  # [win]
 
 build:
   number: 0
@@ -33,7 +35,7 @@ test:
     - test -f ${PREFIX}/include/m4ri/m4ri.h                             # [unix]
     - test ! -f ${PREFIX}/lib/libm4ri.a                                 # [unix]
     - test -f ${PREFIX}/lib/libm4ri${SHLIB_EXT}                         # [unix]
-    - if not exist %LIBRARY_BIN%\\m4ri-1.dll exit 1                     # [win]
+    - if not exist %LIBRARY_BIN%\\m4ri-2.dll exit 1                     # [win]
     - if not exist %LIBRARY_LIB%\\m4ri.lib exit 1                       # [win]
     - if exist %LIBRARY_LIB%\\m4ri_static.lib exit 1                    # [win]
     - if not exist %LIBRARY_INC%\\m4ri\\m4ri.h exit 1                   # [win]
