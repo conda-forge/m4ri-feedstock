@@ -11,6 +11,7 @@ case $target_platform in
         ;;
     win-*)
         export CFLAGS="-MD -I$PREFIX/include -O2 -DM4RI_USE_DLL"
+        export LDFLAGS="${LDFLAGS//-Wl,--export-all-symbols/}"
         export lt_cv_deplibs_check_method=pass_all
         export ac_cv_prog_cc_c11=""
         export ac_cv_prog_cc_c99=""
